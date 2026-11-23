@@ -9,33 +9,51 @@
 - 适用环境：Windows 11 x64（需配合 Windhawk 使用）
 - 当前首发版本：`0.3.13` 测试版（经实测选定）
 
-## 实机演示
+On a transparent Windows 11 taskbar, a dark icon can disappear against a dark wallpaper, and white text can blend into a light window. Adaptive Tray Contrast samples the background behind each supported item and selects black or white independently. The clock and date adapt character by character. For MSIX apps that ship both light and dark icons, the mod selects the matching icon for each taskbar button.
+
+- Requirements: Windows 11 x64 and Windhawk.
+- Initial release: `0.3.13` beta, selected after testing on the author's PC.
+
+## 实机演示 · Demos
 
 **应用图标** · 拖动窗口，观察 ChatGPT 和 Microsoft Store 图标随各自按钮背后的明暗切换。
 
-![应用图标随窗口背景切换](images/app-icons.gif)
+**App icons.** As the window moves behind the taskbar, ChatGPT and Microsoft Store switch to the icon variant suited to the background behind each button.
+
+![应用图标随窗口背景切换 · App icons switching as a window moves](images/app-icons.gif)
 
 **右侧托盘、时间和日期** · 当窗口边缘扫过日期，同一行的数字会分别显示为黑色或白色。
 
-![托盘图标和日期数字在深浅分界处独立变色](images/tray-clock-date.gif)
+**System tray, clock and date.** Watch the edge of the window cross the date. Digits on the dark side turn white while digits on the light side turn black, even within the same line.
 
-## Summary (English)
+![托盘和日期逐字符变色 · Tray and per-character date contrast](images/tray-clock-date.gif)
 
-**Adaptive Tray Contrast** is a Windhawk mod for Windows 11 (x64) built for transparent taskbars. Instead of switching the entire taskbar together with the system theme, it samples the live background behind each supported element independently and chooses black or white per element—even per character on the clock and date, so digits in the same date line can turn black or white individually as a window boundary moves behind them. It also switches between light and dark icon variants for supported MSIX apps that ship dual icon sets. Initial release: `0.3.13` beta.
+## 安装与更新 · Installation and updates
 
-## 安装与更新
+**首次安装**
 
-- **首次安装**：在本仓库中打开 `adaptive-tray-contrast.wh.cpp`，复制完整源码；打开 Windhawk 新建一个本地模组，将默认代码全选替换为复制的源码，点击 **编译 Mod** 即可生效。
-- **已有旧版更新**：在 Windhawk 中直接编辑原有的 `adaptive-tray-contrast` 模组，全选替换为最新源码后重新点击 **编译 Mod**。
+1. 打开[模组源码](adaptive-tray-contrast.wh.cpp)，复制完整内容。
+2. 在 Windhawk 里新建本地模组，全选默认代码，粘贴刚复制的源码。
+3. 点击 **编译 Mod**。
 
-## 已知问题与反馈
+**First installation**
 
-- 当图标或文字刚好落在深浅背景的交界处时，有时会出现短暂闪烁。
+1. Open the [mod source file](adaptive-tray-contrast.wh.cpp) and copy its entire contents.
+2. In Windhawk, create a local mod. Select all the default code and paste the source you copied.
+3. Click **Compile Mod**.
 
-如果你在使用中遇到显示异常、图标切换问题或其他 Bug，欢迎在仓库的 **Issues** 里反馈，提交时请尽量附上你的 **Windows 版本号**（可按 `Win + R` 输入 `winver` 查看）以及**复现步骤**。
+**更新已有版本**：在 Windhawk 里打开已有的 `adaptive-tray-contrast`，编辑它的源码，全选替换后重新编译。
 
-## 署名与许可证
+**Updating an existing installation.** In Windhawk, edit your existing `adaptive-tray-contrast` mod. Replace its source with the updated file and click **Compile Mod** again.
 
-本项目由 **StillDialing** 提出需求、实机测试并挑选首发版本，模组代码在 AI 协助下完成。
+## 已知问题与反馈 · Known issue and bug reports
 
-源码采用 **GPL-3.0-only** 许可证发布，并保留源码中原有第三方参考实现的署名与来源说明。
+图标或文字刚好落在深浅背景交界处时，可能短暂闪烁。遇到显示异常时，请在 [Issues](../../issues) 中写明复现步骤，并附上 Windows 版本号。按 `Win + R`，输入 `winver` 即可查看。
+
+Icons or text may flicker briefly at the boundary between a light and a dark background. If you see a display or icon-switching problem, please [open an issue](../../issues) with the steps to reproduce it and your Windows build number. Press `Win + R`, type `winver`, and press Enter to find it.
+
+## 署名与许可证 · Credits and license
+
+本项目由 **StillDialing** 提出需求、实机测试并挑选首发版本，模组代码在 AI 协助下完成。源码采用 **GPL-3.0-only** 许可证发布，并保留第三方参考实现的署名与来源说明。
+
+**StillDialing** proposed the mod, tested it on Windows, and selected the initial release. The code was developed with AI assistance and is distributed under **GPL-3.0-only**. Credits and source references for third-party implementations are included in the source file.
