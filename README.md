@@ -9,6 +9,16 @@
 - 适用环境：Windows 11 x64（需配合 Windhawk 使用）
 - 当前首发版本：`0.3.13` 测试版（经实测选定）
 
+## 实机演示
+
+**应用图标** · 拖动窗口，观察 ChatGPT 和 Microsoft Store 图标随各自按钮背后的明暗切换。
+
+![应用图标随窗口背景切换](images/app-icons.gif)
+
+**右侧托盘、时间和日期** · 当窗口边缘扫过日期，同一行的数字会分别显示为黑色或白色。
+
+![托盘图标和日期数字在深浅分界处独立变色](images/tray-clock-date.gif)
+
 ## Summary (English)
 
 **Adaptive Tray Contrast** is a Windhawk mod for Windows 11 (x64) built for transparent taskbars. Instead of switching the entire taskbar together with the system theme, it samples the live background behind each supported element independently and chooses black or white per element—even per character on the clock and date, so digits in the same date line can turn black or white individually as a window boundary moves behind them. It also switches between light and dark icon variants for supported MSIX apps that ship dual icon sets. Initial release: `0.3.13` beta.
