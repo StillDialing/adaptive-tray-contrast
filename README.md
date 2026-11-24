@@ -1,63 +1,70 @@
-# 任务栏自适应变色 · Adaptive Tray Contrast
+# Adaptive Tray Contrast
 
-把 Windows 11 的任务栏设成透明之后，底下有时是亮色窗口，有时是深色壁纸，原本固定的白字或黑图标经常会糊在背景里看不清。这个 Windhawk 模组就是为了解决这个日常小问题做的。
+On a transparent Windows 11 taskbar, a light window can sit behind half the date while the other half is over dark wallpaper. This Windhawk mod chooses black or white for each clock and date character according to the background behind it.
 
-它**不是**让整条任务栏跟着系统浅色或深色主题一起切换，而是**根据每个受支持元素所在位置的实际背景画面，各自单独判色**。因此同一条任务栏可以一边显示黑色、一边显示白色。最直观的例子是，把一个亮色窗口慢慢拖过右下角的日期，当深浅分界线划过时，同一行日期里的数字会按各自背后的明暗分别变黑或变白。
+Supported monochrome tray icons and the Chinese/English input indicator adapt independently. Start, Search, Task View, Widgets and app buttons can switch button themes. For packaged apps that provide both light and dark icon variants, the mod uses the variant that suits each button's background. Colored tray icons and the colored part of the battery keep their original colors. A packaged app's themed icon can cover its own dynamic artwork.
 
-除了系统托盘里受支持的单色图标和文字外，模组也会识别部分自带深、浅两套图标的 MSIX 应用，按各自按钮背后画面的明暗自动切换对应版本的图标。
+In 0.3.16, clicking the Chinese/English input indicator hides the previous tinted glyph while the new one is captured. When the native glyph already has the desired color, the mod displays it directly.
 
-- 适用环境：Windows 11 x64 或 ARM64（需配合 Windhawk 使用）
-- 当前投稿版：`0.3.15`（下方安装步骤使用此版）。已加入 ARM64 适配，尚未在 ARM64 设备上实测。
-- [原实测版 0.3.13](https://github.com/StillDialing/adaptive-tray-contrast/blob/b84ae461bdae1dd66f2228db9b6355a888a64471/adaptive-tray-contrast.wh.cpp)：下方两段演示展示的是原有变色功能。
-- 投稿版默认每 80 毫秒采样，可在设置中调整为 40–2000 毫秒。画面和布局相同时会复用已计算的对比度，但仍需采样以检测变化。
+## 中文说明
 
-On a transparent Windows 11 taskbar, a dark icon can disappear against a dark wallpaper, and white text can blend into a light window. Adaptive Tray Contrast samples the background behind each supported item and selects black or white independently. The clock and date adapt character by character. For MSIX apps that ship both light and dark icons, the mod selects the matching icon for each taskbar button.
+在 Windows 11 的透明任务栏上，如果浅色窗口的边缘刚好穿过日期，同一行里，压在浅色窗口上的数字可以变黑，留在深色壁纸上的数字可以保持白色。时间和日期分别逐字符判断。
 
-- Requirements: Windows 11 (x64 or ARM64) and Windhawk.
-- Current submission: `0.3.15`. The installation steps below use this version. The mod includes an ARM64 implementation. Runtime behavior on ARM64 hardware is still unverified.
-- [Original tested build (0.3.13)](https://github.com/StillDialing/adaptive-tray-contrast/blob/b84ae461bdae1dd66f2228db9b6355a888a64471/adaptive-tray-contrast.wh.cpp). The two demos show the existing contrast behavior.
-- The submission samples every 80 ms by default, adjustable from 40 to 2000 ms. It reuses contrast calculations on an unchanged frame and layout, while continuing to sample for changes.
+模组也会分别调整受支持的单色托盘图标和中英文输入法指示器，切换开始、搜索、任务视图、小组件及应用按钮的深浅主题。打包应用如果自带深浅两套图标，模组会按每个按钮背后的画面选用对应图标。彩色托盘图标和电池的彩色部分保留原色；应用自带的动态图案可能被深浅版图标覆盖。
 
-## 实机演示 · Demos
+从 0.3.16 起，点击“中／英”时会先撤下旧字的着色层，再用新字着色，减少切换瞬间的重影。如果系统原字已经是需要的颜色，就直接显示原字。
 
-**应用图标** · 拖动窗口，观察 ChatGPT 和 Microsoft Store 图标随各自按钮背后的明暗切换。
+## Demos · 实机演示
 
-**App icons.** As the window moves behind the taskbar, ChatGPT and Microsoft Store switch to the icon variant suited to the background behind each button.
+### App icons · 应用图标
 
-![应用图标随窗口背景切换 · App icons switching as a window moves](images/app-icons.gif)
+**Drag a window · 缓慢拖动窗口**  
+Watch each supported app icon as the window edge passes behind its button.  
+窗口边缘扫过不同按钮时，各应用图标分别切换深浅版本。
 
-**右侧托盘、时间和日期** · 当窗口边缘扫过日期，同一行的数字会分别显示为黑色或白色。
+![App icons as a window edge moves behind the taskbar](images/app-icons-window-drag.gif)
 
-**System tray, clock and date.** Watch the edge of the window cross the date. Digits on the dark side turn white while digits on the light side turn black, even within the same line.
+**Switch between full-screen apps · 切换全屏应用**  
+Compare the app icons as you switch apps and reveal the taskbar.  
+切换全屏应用，观察任务栏显示时应用图标的变化。
 
-![托盘和日期逐字符变色 · Tray and per-character date contrast](images/tray-clock-date.gif)
+![App icons when switching between full-screen apps](images/app-icons-window-switch.gif)
 
-## 安装与更新 · Installation and updates
+### System tray, clock and date · 右侧托盘、时间和日期
 
-**首次安装**
+**Drag a window · 缓慢拖动窗口**  
+Follow the window edge across the tray icons and individual clock and date characters.  
+留意窗口边缘经过右侧托盘和日期时，哪些图标、哪些数字先变色。
 
-1. 打开[模组源码](adaptive-tray-contrast.wh.cpp)，复制完整内容。
-2. 在 Windhawk 里新建本地模组，全选默认代码，粘贴刚复制的源码。
-3. 点击 **编译 Mod**。
+![Tray icons and individual characters as a window moves](images/tray-window-drag.gif)
 
-**First installation**
+**Switch between full-screen apps · 切换全屏应用**  
+Compare the right side of the taskbar against the different backgrounds.  
+切换全屏应用后，对比不同背景下右侧托盘、时间和日期的颜色。
 
-1. Open the [mod source file](adaptive-tray-contrast.wh.cpp) and copy its entire contents.
-2. In Windhawk, create a local mod. Select all the default code and paste the source you copied.
-3. Click **Compile Mod**.
+![System tray, clock and date when switching between full-screen apps](images/tray-window-switch.gif)
 
-**更新已有版本**：在 Windhawk 里打开已有的 `adaptive-tray-contrast`，编辑它的源码，全选替换后重新编译。
+## Settings · 设置
 
-**Updating an existing installation.** In Windhawk, edit your existing `adaptive-tray-contrast` mod. Replace its source with the updated file and click **Compile Mod** again.
+The default sampling interval is 80 ms (adjustable from 40 to 2000 ms). A longer interval samples less often and responds more slowly. Sharp background boundaries can cause brief flicker.
 
-## 已知问题与反馈 · Known issue and bug reports
+默认每 80 毫秒采样一次，可在设置中调整为 40 至 2000 毫秒。间隔越长，采样越少，响应也越慢。图标恰好位于深浅交界处时可能短暂闪烁。
 
-图标或文字刚好落在深浅背景交界处时，可能短暂闪烁。遇到显示异常时，请在 [Issues](../../issues) 中写明复现步骤，并附上 Windows 版本号。按 `Win + R`，输入 `winver` 即可查看。
+## Installation and updates · 安装与更新
 
-Icons or text may flicker briefly at the boundary between a light and a dark background. If you see a display or icon-switching problem, please [open an issue](../../issues) with the steps to reproduce it and your Windows build number. Press `Win + R`, type `winver`, and press Enter to find it.
+**Windows 11 and Windhawk · Windows 11，需安装 Windhawk**  
+Version `0.3.16` compiles for both x64 and ARM64. The input indicator fix was tested on x64. ARM64 runtime behavior still needs verification on hardware.  
+当前版本为 `0.3.16`，支持 x64 和 ARM64 编译。中英文切换修复已在 x64 电脑实测，ARM64 设备上的实际表现仍待验证。
 
-## 署名与许可证 · Credits and license
+1. Open the [source file](adaptive-tray-contrast.wh.cpp) and copy the entire file. 打开[模组源码](adaptive-tray-contrast.wh.cpp)，复制完整内容。
+2. In Windhawk, create a local mod for the first installation. To update, open the existing mod and choose **Edit**. 首次安装时新建本地模组；更新时打开已有模组，点**编辑**。
+3. Replace the editor contents and choose **Compile Mod**. 全选替换编辑器里的代码，点**编译 Mod**。
 
-本项目由 **StillDialing** 提出需求、实机测试并挑选首发版本，模组代码在 AI 协助下完成。源码采用 **GPL-3.0-only** 许可证发布，并保留第三方参考实现的署名与来源说明。
+## Feedback · 反馈
 
-**StillDialing** proposed the mod, tested it on Windows, and selected the initial release. The code was developed with AI assistance and is distributed under **GPL-3.0-only**. Credits and source references for third-party implementations are included in the source file.
+Please include your Windows build (run `winver`), the affected icon and the steps to reproduce the issue. 反馈时请注明 Windows 版本号（运行 `winver` 可查看）、受影响的图标及复现步骤。[Issues](../../issues)
+
+## Credits and license · 署名与许可证
+
+**StillDialing** proposed the mod and tested it on Windows. The code was written with AI assistance. The source retains the credits for third-party reference implementations.  
+**StillDialing** 提出需求并进行 Windows 实机测试。模组代码在 AI 协助下完成，源码中保留了第三方参考实现的署名。[GPL-3.0-only](LICENSE)
