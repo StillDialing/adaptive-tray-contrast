@@ -6,15 +6,15 @@
 
 除了系统托盘里受支持的单色图标和文字外，模组也会识别部分自带深、浅两套图标的 MSIX 应用，按各自按钮背后画面的明暗自动切换对应版本的图标。
 
-- 适用环境：Windows 11 x64（需配合 Windhawk 使用）
-- 当前投稿版：`0.3.15`（下方安装步骤使用此版）。已通过 x64 编译和独立窗口的启停测试，仍待在 Explorer 中复测。
+- 适用环境：Windows 11 x64 或 ARM64（需配合 Windhawk 使用）
+- 当前投稿版：`0.3.15`（下方安装步骤使用此版）。已加入 ARM64 适配，尚未在 ARM64 设备上实测。
 - [原实测版 0.3.13](https://github.com/StillDialing/adaptive-tray-contrast/blob/b84ae461bdae1dd66f2228db9b6355a888a64471/adaptive-tray-contrast.wh.cpp)：下方两段演示展示的是原有变色功能。
 - 投稿版默认每 80 毫秒采样，可在设置中调整为 40–2000 毫秒。画面和布局相同时会复用已计算的对比度，但仍需采样以检测变化。
 
 On a transparent Windows 11 taskbar, a dark icon can disappear against a dark wallpaper, and white text can blend into a light window. Adaptive Tray Contrast samples the background behind each supported item and selects black or white independently. The clock and date adapt character by character. For MSIX apps that ship both light and dark icons, the mod selects the matching icon for each taskbar button.
 
-- Requirements: Windows 11 x64 and Windhawk.
-- Current submission: `0.3.15`. The installation steps below use this version. It passed an x64 build and an isolated window lifecycle test. Testing inside Explorer is still pending for this revision.
+- Requirements: Windows 11 (x64 or ARM64) and Windhawk.
+- Current submission: `0.3.15`. The installation steps below use this version. The mod includes an ARM64 implementation. Runtime behavior on ARM64 hardware is still unverified.
 - [Original tested build (0.3.13)](https://github.com/StillDialing/adaptive-tray-contrast/blob/b84ae461bdae1dd66f2228db9b6355a888a64471/adaptive-tray-contrast.wh.cpp). The two demos show the existing contrast behavior.
 - The submission samples every 80 ms by default, adjustable from 40 to 2000 ms. It reuses contrast calculations on an unchanged frame and layout, while continuing to sample for changes.
 
